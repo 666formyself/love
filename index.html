@@ -329,23 +329,94 @@
             }
         }
         
-        /* 互动体验区域 */
-        .experience-section {
+        /* 主页区域样式 */
+        .home-section {
             background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 40px 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
             text-align: center;
-            min-height: 200px;
+            min-height: 400px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
         
-        .experience-content {
+        .home-content {
             margin: 20px 0;
+            width: 100%;
+        }
+        
+        .home-content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ff4d4d;
+        }
+        
+        .home-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        /* 主界面图片样式 */
+        .main-image {
+            max-width: 100%;
+            max-height: 350px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            animation: fadeIn 1.5s;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* 主页按钮样式 */
+        .home-buttons {
+            margin: 30px 0;
+        }
+        
+        .home-button {
+            padding: 15px 35px;
+            font-size: 1.2em;
+            margin: 15px 10px;
+            border-radius: 8px;
+        }
+        
+        /* 互动体验区域 */
+        .experience-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            min-height: 350px;
+            display: none; /* 初始隐藏 */
+        }
+        
+        .experience-content {
+        margin: 30px 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+        
+        .experience-content h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .experience-content p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            text-align: center;
         }
         
         .hidden {
@@ -370,6 +441,26 @@
         .step-dot.active {
             background-color: #ff4d4d;
         }
+        
+        /* 回到主页按钮样式 */
+        #backToHome, #backToHomeFromExplore {
+            background-color: #666;
+            padding: 12px 25px;
+            margin-top: 20px;
+        }
+        
+        #backToHome:hover, #backToHomeFromExplore:hover {
+            background-color: #444;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* 大按钮样式 */
+        #exploreMemories, #addNewMemory {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            margin: 15px;
+        }
     </style>
 </head>
 <body>
@@ -391,7 +482,21 @@
             </div>
         </div>
         
-        <div class="step-indicator">
+        <!-- 主页内容区域 -->
+        <div id="homeSection" class="home-section">
+            <div class="home-content">
+                <h2>欢迎来到我们的纪念日网站</h2>
+                <p>这里记录了我们在一起的每一个美好瞬间</p>
+                <img src="images/1.jpg" alt="我们的美好时光" class="main-image">
+                <div class="home-buttons">
+                    <button id="startJourneyBtn" class="home-button">开始回忆之旅</button>
+                    <button id="exploreMemories" class="home-button">探索回忆</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 互动体验区域 -->
+        <div class="step-indicator" id="stepIndicator" style="display: none;">
             <div class="step-dot active" id="dot1"></div>
             <div class="step-dot" id="dot2"></div>
             <div class="step-dot" id="dot3"></div>
@@ -401,20 +506,20 @@
         <div class="experience-section">
             <div id="step1-content" class="experience-content">
                 <h2>欢迎来到我们的纪念日网站</h2>
-                <p>点击下面的按钮开始我们的回忆之旅</p>
-                <button id="startJourneyBtn">开始旅程</button>
+                <p>点击下面的按钮开始我们这一年的回忆之旅</p>
+                <button id="startInteractiveJourneyBtn">开始旅程</button>
             </div>
             
             <div id="step2-content" class="experience-content hidden">
-                <h2>第一步：我们的故事开始</h2>
-                <p>还记得我们第一次相遇的那个午后吗？阳光正好，微风不燥...</p>
+                <h2>第一站：九月镇江一日游</h2>
+                <p>金山寺前，北固楼上，西津渡里</p>
                 <button id="nextToStep3">继续回忆</button>
             </div>
             
             <div id="step3-content" class="experience-content hidden">
-                <h2>第二步：难忘的时光</h2>
-                <p>我们一起走过的每一个地方，都是我心中最珍贵的回忆...</p>
-                <button id="nextToStep4">查看我们的回忆</button>
+                <h2>第二站：中秋合肥之行</h2>
+                <p>古逍遥津的丛林穿梭留下深刻影响</p>
+                <button id="nextToStep4">继续回忆</button>
             </div>
             
             <div id="step4-content" class="experience-content hidden">
@@ -422,6 +527,8 @@
                 <p>现在，让我们互相表达内心的情感...</p>
                 <button id="addMessageInteractive">写下心里话</button>
                 <button id="showGallery">查看我们的照片和视频</button>
+                <!-- 添加回到主页按钮 -->
+                <button id="backToHomeFromInteractive">回到主页</button>
             </div>
         </div>
         
@@ -439,6 +546,23 @@
             <div style="margin-top: 20px;">
                 <button id="addPhotoBtn">添加照片</button>
                 <button id="addVideoBtn">添加视频</button>
+            </div>
+        </div>
+        
+        <!-- 探索回忆区域 -->
+        <div id="exploreSection" class="memory-section hidden">
+            <h2>探索我们的回忆</h2>
+            <div class="gallery" id="exploreGallery">
+                <!-- 这里会动态添加照片和视频 -->
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/150?text=我们的照片" alt="回忆照片">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/150?text=甜蜜时刻" alt="回忆照片">
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <button id="backToHomeFromExplore">回到主页</button>
             </div>
         </div>
         
@@ -503,7 +627,7 @@
     </div>
     
     <footer>
-        <p>用心制作的恋爱纪念日网页 · © 2023</p>
+        <p>用心制作的恋爱纪念日网页 · © 2025</p>
     </footer>
     
     <script>
@@ -584,8 +708,28 @@
             currentStep = step;
         }
         
-        // 步骤按钮事件
+        // 主页按钮事件
         document.getElementById('startJourneyBtn').onclick = function() {
+            // 隐藏主页
+            document.getElementById('homeSection').style.display = 'none';
+            // 显示互动区域和步骤指示器
+            document.querySelector('.experience-section').style.display = 'flex';
+            document.getElementById('stepIndicator').style.display = 'flex';
+            // 显示第一步
+            showStep(1);
+            createHearts();
+        };
+        
+        document.getElementById('exploreMemories').onclick = function() {
+            // 隐藏主页
+            document.getElementById('homeSection').style.display = 'none';
+            // 显示探索区域
+            document.getElementById('exploreSection').classList.remove('hidden');
+            createHearts();
+        };
+        
+        // 互动步骤按钮事件
+        document.getElementById('startInteractiveJourneyBtn').onclick = function() {
             showStep(2);
             createHearts();
         };
@@ -597,6 +741,8 @@
         
         document.getElementById('nextToStep4').onclick = function() {
             showStep(4);
+            document.getElementById('gallerySection').classList.remove('hidden');
+            document.getElementById('messagesSection').classList.remove('hidden');
             createHearts();
         };
         
@@ -608,6 +754,28 @@
             document.getElementById('gallerySection').classList.remove('hidden');
             document.getElementById('messagesSection').classList.remove('hidden');
             createHearts();
+        };
+        
+        // 回到主页功能
+        document.getElementById('backToHomeFromInteractive').onclick = function() {
+            // 隐藏所有互动内容
+            document.querySelector('.experience-section').style.display = 'none';
+            document.getElementById('stepIndicator').style.display = 'none';
+            document.getElementById('gallerySection').classList.add('hidden');
+            document.getElementById('messagesSection').classList.add('hidden');
+            
+            // 显示主页
+            document.getElementById('homeSection').style.display = 'flex';
+            
+            // 重置步骤指示器
+            updateStepIndicator(1);
+            currentStep = 1;
+        };
+        
+        // 从探索区域回到主页
+        document.getElementById('backToHomeFromExplore').onclick = function() {
+            document.getElementById('exploreSection').classList.add('hidden');
+            document.getElementById('homeSection').style.display = 'flex';
         };
         
         // 弹窗控制
