@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们的恋爱纪念日</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            animation: heartBeat 1.5s infinite;
+        }
+        
+        .love-counter {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: zoomIn 1s ease-out;
+        }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .gallery-item {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .memory-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: left;
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        .message-box {
+            background-color: #fff9f9;
+            border-left: 5px solid #ff4d4d;
+            padding: 15px;
+            margin: 15px 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .message-date {
+            font-size: 0.85em;
+            color: #888;
+            text-align: right;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+            animation: bounceIn 1.2s;
+        }
+        
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        button:hover {
+            background-color: #e60000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        footer {
+            margin-top: 30px;
+            padding: 10px;
+            color: #666;
+            animation: fadeIn 2s;
+        }
+        
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            animation: zoomIn 0.3s;
+            position: relative;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        textarea, input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        /* 动画关键帧 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes heartBeat {
+            0% {
+                transform: scale(1);
+            }
+            5% {
+                transform: scale(1.1);
+            }
+            10% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* 引导步骤样式 */
+        .guide-step {
+            position: fixed;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #ff4d4d;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            z-index: 2000;
+            max-width: 300px;
+            display: none;
+        }
+        
+        .guide-step h3 {
+            margin-top: 0;
+            color: #ff4d4d;
+        }
+        
+        .guide-step button {
+            margin: 5px;
+        }
+        
+        .guide-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+        
+        /* 隐藏接口区域 */
+        .hidden-api {
+            display: none;
+        }
+        
+        /* 特殊效果 */
+        .floating-hearts {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff4d4d;
+            animation: floatUp 5s linear forwards;
+        }
+        
+        @keyframes floatUp {
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* 互动体验区域 */
+        .experience-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .experience-content {
+            margin: 20px 0;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .step-dot.active {
+            background-color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>❤️ 我们的恋爱纪念日 ❤️</h1>
+            <p>从相遇的那一天起，每一天都因你而美好</p>
+        </header>
+        
+        <div class="love-counter">
+            <h2>我们已经在一起</h2>
+            <div id="counter">
+                <span id="years">0</span> 年 
+                <span id="months">0</span> 月 
+                <span id="days">0</span> 天 
+                <span id="hours">0</span> 小时 
+                <span id="minutes">0</span> 分钟 
+                <span id="seconds">0</span> 秒
+            </div>
+        </div>
+        
+        <div class="step-indicator">
+            <div class="step-dot active" id="dot1"></div>
+            <div class="step-dot" id="dot2"></div>
+            <div class="step-dot" id="dot3"></div>
+            <div class="step-dot" id="dot4"></div>
+        </div>
+        
+        <div class="experience-section">
+            <div id="step1-content" class="experience-content">
+                <h2>欢迎来到我们的纪念日网站</h2>
+                <p>点击下面的按钮开始我们的回忆之旅</p>
+                <button id="startJourneyBtn">开始旅程</button>
+            </div>
+            
+            <div id="step2-content" class="experience-content hidden">
+                <h2>第一步：我们的故事开始</h2>
+                <p>还记得我们第一次相遇的那个午后吗？阳光正好，微风不燥...</p>
+                <button id="nextToStep3">继续回忆</button>
+            </div>
+            
+            <div id="step3-content" class="experience-content hidden">
+                <h2>第二步：难忘的时光</h2>
+                <p>我们一起走过的每一个地方，都是我心中最珍贵的回忆...</p>
+                <button id="nextToStep4">查看我们的回忆</button>
+            </div>
+            
+            <div id="step4-content" class="experience-content hidden">
+                <h2>第三步：我们的心里话</h2>
+                <p>现在，让我们互相表达内心的情感...</p>
+                <button id="addMessageInteractive">写下心里话</button>
+                <button id="showGallery">查看我们的照片和视频</button>
+            </div>
+        </div>
+        
+        <div class="memory-section hidden" id="gallerySection">
+            <h2>我们的美好回忆</h2>
+            <div class="gallery" id="mediaGallery">
+                <!-- 这里会动态添加照片和视频 -->
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/150?text=我们的照片" alt="回忆照片">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/150?text=甜蜜时刻" alt="回忆照片">
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <button id="addPhotoBtn">添加照片</button>
+                <button id="addVideoBtn">添加视频</button>
+            </div>
+        </div>
+        
+        <div class="memory-section hidden" id="messagesSection">
+            <h2>想对你说的话</h2>
+            <div id="messagesContainer">
+                <div class="message-box">
+                    <p>亲爱的，遇见你是我生命中最美好的事情。每一天和你在一起都让我感到无比幸福。</p>
+                    <p class="message-date">2023年8月1日</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 添加照片的弹窗 -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>添加照片</h2>
+            <input type="file" id="photoUpload" accept="image/*">
+            <input type="text" id="photoCaption" placeholder="为照片添加描述...">
+            <button id="savePhotoBtn">保存照片</button>
+        </div>
+    </div>
+    
+    <!-- 添加视频的弹窗 -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>添加视频</h2>
+            <input type="file" id="videoUpload" accept="video/*">
+            <input type="text" id="videoCaption" placeholder="为视频添加描述...">
+            <button id="saveVideoBtn">保存视频</button>
+        </div>
+    </div>
+    
+    <!-- 添加留言的弹窗 -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>写下你的心里话</h2>
+            <textarea id="messageText" rows="5" placeholder="写下你想说的话..."></textarea>
+            <button id="saveMessageBtn">保存留言</button>
+        </div>
+    </div>
+    
+    <!-- 隐藏的API接口区域 -->
+    <div class="hidden-api">
+        <!-- 管理员接口 -->
+        <div id="admin-api">
+            <!-- 添加预设内容的接口 -->
+            <button id="addPresetPhoto" data-src="https://via.placeholder.com/150?text=预设照片1" data-caption="预设照片描述">添加预设照片</button>
+            <button id="addPresetMessage" data-text="这是通过API添加的预设消息" data-date="2023-10-01">添加预设消息</button>
+            
+            <!-- 删除内容的接口 -->
+            <button id="clearAllPhotos">清空所有照片</button>
+            <button id="clearAllMessages">清空所有消息</button>
+            
+            <!-- 更新计数器起始日期 -->
+            <button id="updateStartDate" data-date="2023-08-01">更新起始日期</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>用心制作的恋爱纪念日网页 · © 2023</p>
+    </footer>
+    
+    <script>
+        // 计算恋爱时长
+        function updateLoveCounter() {
+            // 设置你们的恋爱开始日期 (年, 月-1, 日)
+            const startDate = new Date(2023, 7, 1); // 2023年8月1日（注意：月份从0开始计算）
+            
+            const now = new Date();
+            
+            // 计算年份差
+            let years = now.getFullYear() - startDate.getFullYear();
+            // 计算月份差
+            let months = now.getMonth() - startDate.getMonth();
+            // 计算日期差
+            let days = now.getDate() - startDate.getDate();
+            
+            // 调整负数情况
+            if (days < 0) {
+                months--;
+                // 获取上个月的天数
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+            
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            // 计算小时、分钟和秒
+            const diff = now - startDate;
+            const totalHours = Math.floor(diff / (1000 * 60 * 60));
+            const hours = totalHours % 24;
+            const minutes = Math.floor(diff / (1000 * 60)) % 60;
+            const seconds = Math.floor(diff / 1000) % 60;
+            
+            // 更新页面显示
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = months;
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+        
+        // 每秒更新一次计时器
+        setInterval(updateLoveCounter, 1000);
+        updateLoveCounter(); // 初始调用
+        
+        // 互动体验步骤控制
+        let currentStep = 1;
+        
+        function updateStepIndicator(step) {
+            for (let i = 1; i <= 4; i++) {
+                const dot = document.getElementById(`dot${i}`);
+                if (i <= step) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            }
+        }
+        
+        function showStep(step) {
+            // 隐藏所有步骤内容
+            document.getElementById('step1-content').classList.add('hidden');
+            document.getElementById('step2-content').classList.add('hidden');
+            document.getElementById('step3-content').classList.add('hidden');
+            document.getElementById('step4-content').classList.add('hidden');
+            
+            // 显示当前步骤
+            document.getElementById(`step${step}-content`).classList.remove('hidden');
+            
+            // 更新步骤指示器
+            updateStepIndicator(step);
+            
+            currentStep = step;
+        }
+        
+        // 步骤按钮事件
+        document.getElementById('startJourneyBtn').onclick = function() {
+            showStep(2);
+            createHearts();
+        };
+        
+        document.getElementById('nextToStep3').onclick = function() {
+            showStep(3);
+            createHearts();
+        };
+        
+        document.getElementById('nextToStep4').onclick = function() {
+            showStep(4);
+            createHearts();
+        };
+        
+        document.getElementById('addMessageInteractive').onclick = function() {
+            document.getElementById('messageModal').style.display = 'block';
+        };
+        
+        document.getElementById('showGallery').onclick = function() {
+            document.getElementById('gallerySection').classList.remove('hidden');
+            document.getElementById('messagesSection').classList.remove('hidden');
+            createHearts();
+        };
+        
+        // 弹窗控制
+        const photoModal = document.getElementById('photoModal');
+        const videoModal = document.getElementById('videoModal');
+        const messageModal = document.getElementById('messageModal');
+        
+        const addPhotoBtn = document.getElementById('addPhotoBtn');
+        const addVideoBtn = document.getElementById('addVideoBtn');
+        
+        const closeButtons = document.getElementsByClassName('close');
+        
+        addPhotoBtn.onclick = function() {
+            photoModal.style.display = 'block';
+        }
+        
+        addVideoBtn.onclick = function() {
+            videoModal.style.display = 'block';
+        }
+        
+        for (let i = 0; i < closeButtons.length; i++) {
+            closeButtons[i].onclick = function() {
+                photoModal.style.display = 'none';
+                videoModal.style.display = 'none';
+                messageModal.style.display = 'none';
+            }
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == photoModal) {
+                photoModal.style.display = 'none';
+            }
+            if (event.target == videoModal) {
+                videoModal.style.display = 'none';
+            }
+            if (event.target == messageModal) {
+                messageModal.style.display = 'none';
+            }
+        }
+        
+        // 保存照片
+        document.getElementById('savePhotoBtn').onclick = function() {
+            const fileInput = document.getElementById('photoUpload');
+            const caption = document.getElementById('photoCaption').value;
+            
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const gallery = document.getElementById('mediaGallery');
+                    const newItem = document.createElement('div');
+                    newItem.className = 'gallery-item';
+                    newItem.innerHTML = `<img src="${e.target.result}" alt="${caption || '我们的照片'}">`;
+                    gallery.appendChild(newItem);
+                    
+                    // 添加动画效果
+                    newItem.style.animation = 'fadeIn 0.5s';
+                    
+                    photoModal.style.display = 'none';
+                    fileInput.value = '';
+                    document.getElementById('photoCaption').value = '';
+                    
+                    // 创建爱心动画
+                    createHearts();
+                }
+                
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                alert('请选择一张照片');
+            }
+        }
+        
+        // 保存视频
+        document.getElementById('saveVideoBtn').onclick = function() {
+            const fileInput = document.getElementById('videoUpload');
+            const caption = document.getElementById('videoCaption').value;
+            
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const gallery = document.getElementById('mediaGallery');
+                    const newItem = document.createElement('div');
+                    newItem.className = 'gallery-item';
+                    newItem.innerHTML = `
+                        <video controls>
+                            <source src="${e.target.result}" type="${fileInput.files[0].type}">
+                            您的浏览器不支持视频标签
+                        </video>
+                    `;
+                    gallery.appendChild(newItem);
+                    
+                    // 添加动画效果
+                    newItem.style.animation = 'fadeIn 0.5s';
+                    
+                    videoModal.style.display = 'none';
+                    fileInput.value = '';
+                    document.getElementById('videoCaption').value = '';
+                    
+                    // 创建爱心动画
+                    createHearts();
+                }
+                
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                alert('请选择一个视频');
+            }
+        }
+        
+        // 保存留言
+        document.getElementById('saveMessageBtn').onclick = function() {
+            const messageText = document.getElementById('messageText').value;
+            
+            if (messageText.trim()) {
+                const now = new Date();
+                const messageContainer = document.getElementById('messagesContainer');
+                const newMessage = document.createElement('div');
+                newMessage.className = 'message-box';
+                newMessage.innerHTML = `
+                    <p>${messageText}</p>
+                    <p class="message-date">${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日</p>
+                `;
+                
+                // 将新留言添加到最前面
+                messageContainer.insertBefore(newMessage, messageContainer.firstChild);
+                
+                messageModal.style.display = 'none';
+                document.getElementById('messageText').value = '';
+                
+                // 创建爱心动画
+                createHearts();
+            } else {
+                alert('请输入留言内容');
+            }
+        }
+        
+        // 创建飘心动画
+        function createHearts() {
+            const heartsContainer = document.createElement('div');
+            heartsContainer.className = 'floating-hearts';
+            document.body.appendChild(heartsContainer);
+            
+            for (let i = 0; i < 10; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.opacity = Math.random() * 0.5 + 0.5;
+                heartsContainer.appendChild(heart);
+            }
+            
+            // 5秒后移除
+            setTimeout(() => {
+                document.body.removeChild(heartsContainer);
+            }, 5000);
+        }
+        
+        // 隐藏API接口功能（仅供开发者使用）
+        document.getElementById('addPresetPhoto').onclick = function() {
+            const gallery = document.getElementById('mediaGallery');
+            const newItem = document.createElement('div');
+            newItem.className = 'gallery-item';
+            newItem.innerHTML = `<img src="${this.dataset.src}" alt="${this.dataset.caption}">`;
+            gallery.appendChild(newItem);
+            newItem.style.animation = 'fadeIn 0.5s';
+        };
+        
+        document.getElementById('addPresetMessage').onclick = function() {
+            const messageContainer = document.getElementById('messagesContainer');
+            const newMessage = document.createElement('div');
+            newMessage.className = 'message-box';
+            newMessage.innerHTML = `
+                <p>${this.dataset.text}</p>
+                <p class="message-date">${this.dataset.date}</p>
+            `;
+            messageContainer.insertBefore(newMessage, messageContainer.firstChild);
+            newMessage.style.animation = 'fadeIn 0.5s';
+        };
+        
+        document.getElementById('clearAllPhotos').onclick = function() {
+            const gallery = document.getElementById('mediaGallery');
+            gallery.innerHTML = '';
+        };
+        
+        document.getElementById('clearAllMessages').onclick = function() {
+            const messagesContainer = document.getElementById('messagesContainer');
+            messagesContainer.innerHTML = '';
+        };
+        
+        document.getElementById('updateStartDate').onclick = function() {
+            // 这里可以实现更新起始日期的逻辑
+            alert('起始日期已更新为: ' + this.dataset.date);
+        };
+    </script>
+</body>
+</html>
