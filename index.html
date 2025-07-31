@@ -582,6 +582,8 @@
             border-radius: 25px;
             overflow: hidden;
             box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            position: relative;
+            background-color: #000;
         }
         
         .step-video video {
@@ -726,6 +728,7 @@
             min-width: 300px;
             height: 250px;
             margin: 10px;
+            background-color: #000;
         }
         
         /* 长文本展示样式 */
@@ -797,6 +800,32 @@
         .letter-signature {
             text-align: right;
             margin-top: 30px;
+        }
+        
+        /* 添加视频加载提示样式 */
+        .play-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 10;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .play-hint:hover {
+            background: rgba(0,0,0,0.9);
+        }
+        
+        .play-hint small {
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -1092,26 +1121,97 @@
         setInterval(updateLoveCounter, 1000);
         updateLoveCounter(); // 初始调用
         
-        // 检查视频是否可以播放
+        // 改进的视频播放检查函数
         function checkVideoPlayback() {
             const videos = document.querySelectorAll('video');
             videos.forEach((video, index) => {
                 const errorDiv = document.getElementById(`videoError${index + 1}`);
                 if (video && errorDiv) {
+                    // 添加更多事件监听器
                     video.addEventListener('error', function(e) {
                         console.log('视频加载错误:', e);
+                        console.log('错误代码:', video.error?.code);
                         errorDiv.style.display = 'block';
+                        errorDiv.innerHTML = `视频加载失败 (${video.error?.code || '未知错误'})<br>请检查文件是否存在或格式是否支持`;
                     });
                     
                     video.addEventListener('loadeddata', function() {
                         errorDiv.style.display = 'none';
                     });
+                    
+                    // 添加加载状态检查
+                    video.addEventListener('loadstart', function() {
+                        console.log('开始加载视频');
+                    });
+                    
+                    video.addEventListener('canplay', function() {
+                        console.log('视频可以播放');
+                    });
                 }
             });
         }
         
+        // 改进的视频播放函数
+        function playVideoWithHandling(video) {
+            if (!video) return;
+            
+            // 先尝试静音播放（绕过自动播放限制）
+            video.muted = true;
+            const playPromise = video.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // 播放成功后添加用户交互取消静音
+                    video.addEventListener('click', function() {
+                        video.muted = false;
+                    }, { once: true });
+                }).catch(error => {
+                    console.log('播放失败:', error);
+                    // 显示播放提示
+                    showPlayHint(video);
+                });
+            }
+        }
+        
+        // 显示播放提示
+        function showPlayHint(videoElement) {
+            const container = videoElement.parentNode;
+            let hint = container.querySelector('.play-hint');
+            
+            if (!hint) {
+                hint = document.createElement('div');
+                hint.className = 'play-hint';
+                hint.innerHTML = `
+                    ▶ 点击播放视频
+                    <small>如果无法播放，请检查视频文件</small>
+                `;
+                hint.onclick = () => {
+                    videoElement.muted = false;
+                    videoElement.play().catch(e => console.log('手动播放失败:', e));
+                    hint.remove();
+                };
+                container.style.position = 'relative';
+                container.appendChild(hint);
+            }
+        }
+        
         // 页面加载完成后检查视频
-        window.addEventListener('load', checkVideoPlayback);
+        window.addEventListener('load', function() {
+            checkVideoPlayback();
+            
+            // 预加载关键视频
+            const keyVideos = [
+                document.getElementById('video1'),
+                document.getElementById('video2')
+            ];
+            
+            keyVideos.forEach(video => {
+                if (video) {
+                    // 设置预加载属性
+                    video.preload = 'metadata';
+                }
+            });
+        });
         
         // 互动体验步骤控制
         let currentStep = 1;
@@ -1162,7 +1262,7 @@
                     const video = document.getElementById('video1');
                     if (video) {
                         setTimeout(() => {
-                            video.play().catch(e => console.log('自动播放失败:', e));
+                            playVideoWithHandling(video);
                             currentVideos.push(video);
                         }, 100);
                     }
@@ -1170,7 +1270,7 @@
                     const video = document.getElementById('video2');
                     if (video) {
                         setTimeout(() => {
-                            video.play().catch(e => console.log('自动播放失败:', e));
+                            playVideoWithHandling(video);
                             currentVideos.push(video);
                         }, 100);
                     }
@@ -1178,7 +1278,7 @@
                     const video = document.getElementById('video3');
                     if (video) {
                         setTimeout(() => {
-                            video.play().catch(e => console.log('自动播放失败:', e));
+                            playVideoWithHandling(video);
                             currentVideos.push(video);
                         }, 100);
                     }
@@ -1186,7 +1286,7 @@
                     const video = document.getElementById('video4');
                     if (video) {
                         setTimeout(() => {
-                            video.play().catch(e => console.log('自动播放失败:', e));
+                            playVideoWithHandling(video);
                             currentVideos.push(video);
                         }, 100);
                     }
@@ -1232,22 +1332,15 @@
                     video.style.display = 'block';
                     
                     // 播放视频
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            // 播放成功
-                            currentVideos.push(video);
-                        }).catch(e => {
-                            console.log('自动播放失败:', e);
-                        });
-                    }
+                    playVideoWithHandling(video);
+                    currentVideos.push(video);
                     
                     // 监听视频结束事件
                     video.addEventListener('ended', function onEnded() {
                         video.removeEventListener('ended', onEnded);
                         // 播放下一个视频
                         playNextVideo(index + 1);
-                    });
+                    }, { once: true });
                 }
             }
         }
