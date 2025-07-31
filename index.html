@@ -443,7 +443,7 @@
             height: 12px;
             border-radius: 50%;
             background-color: #ddd;
-            margin: 0 5px;
+            margin: 0 3px;
             transition: background-color 0.3s;
         }
         
@@ -612,6 +612,11 @@
             <div class="step-dot" id="dot2"></div>
             <div class="step-dot" id="dot3"></div>
             <div class="step-dot" id="dot4"></div>
+            <div class="step-dot" id="dot5"></div>
+            <div class="step-dot" id="dot6"></div>
+            <div class="step-dot" id="dot7"></div>
+            <div class="step-dot" id="dot8"></div>
+            <div class="step-dot" id="dot9"></div>
         </div>
         
         <div class="experience-section">
@@ -621,7 +626,7 @@
                 <button id="startInteractiveJourneyBtn">开始旅程</button>
             </div>
             
-            <div id="step2-content" class="eexperience-content hidden">
+            <div id="step2-content" class="experience-content hidden">
                 <h2>第一站：九月镇江一日游</h2>
                 <p>金山寺前，北固楼上，西津渡里</p>
                 <button id="nextToStep3">继续回忆</button>
@@ -630,11 +635,41 @@
             <div id="step3-content" class="experience-content hidden">
                 <h2>第二站：中秋合肥之行</h2>
                 <p>古逍遥津的丛林穿梭留下深刻影响</p>
+                <p>此处暂无合适照片</p>
                 <button id="nextToStep4">继续回忆</button>
             </div>
-            
-            <div id="step4-content" class="experience-content hidden">
-                <h2>第三步：我们的心里话</h2>
+
+             <div id="step4-content" class="experience-content hidden">
+                <h2>第三站：停机坪旁的格桑花</h2>
+                <p>国奖答辩后的佳倩，美美哒</p>
+                
+                <button id="nextToStep5">继续回忆</button>
+            </div>
+             <div id="step5-content" class="experience-content hidden">
+                <h2>第四站：西安城墙</h2>
+                <p>么么</p>
+                
+                <button id="nextToStep6">继续回忆</button>
+            </div>
+            <div id="step6-content" class="experience-content hidden">
+                <h2>第五站：栖霞山</h2>
+                <p>红枫漫天，倩影独立</p>
+                
+                <button id="nextToStep7">继续回忆</button>
+            </div>
+            <div id="step7-content" class="experience-content hidden">
+                <h2>第六站：苏州园林</h2>
+                <p>看看小桥流水人家</p>
+                 <button id="nextToStep8">继续回忆</button>
+            </div>
+             <div id="step8-content" class="experience-content hidden">
+                <h2>第七站：春寒料峭的云南</h2>
+                <p>见过风花雪月，环绕洱海，在玉龙雪山脚下感受纳西族的信仰</p>
+                 <button id="nextToStep9">继续回忆</button>
+            </div>
+
+            <div id="step9-content" class="experience-content hidden">
+                <h2>第九站：我们的心里话</h2>
                 <p>现在，让我们互相表达内心的情感...</p>
                 <button id="addMessageInteractive">写下心里话</button>
                 <button id="showGallery">查看我们的照片和视频</button>
@@ -796,25 +831,33 @@
         let currentStep = 1;
         
         function updateStepIndicator(step) {
-            for (let i = 1; i <= 4; i++) {
+            // 更新步骤指示器以支持9个步骤
+            for (let i = 1; i <= 9; i++) {
                 const dot = document.getElementById(`dot${i}`);
-                if (i <= step) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
+                if (dot) {
+                    if (i <= step) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
                 }
             }
         }
         
         function showStep(step) {
-            // 隐藏所有步骤内容
-            document.getElementById('step1-content').classList.add('hidden');
-            document.getElementById('step2-content').classList.add('hidden');
-            document.getElementById('step3-content').classList.add('hidden');
-            document.getElementById('step4-content').classList.add('hidden');
+            // 隐藏所有步骤内容 (更新到step9)
+            for (let i = 1; i <= 9; i++) {
+                const stepElement = document.getElementById(`step${i}-content`);
+                if (stepElement) {
+                    stepElement.classList.add('hidden');
+                }
+            }
             
             // 显示当前步骤
-            document.getElementById(`step${step}-content`).classList.remove('hidden');
+            const currentStepElement = document.getElementById(`step${step}-content`);
+            if (currentStepElement) {
+                currentStepElement.classList.remove('hidden');
+            }
             
             // 更新步骤指示器
             updateStepIndicator(step);
@@ -855,6 +898,31 @@
         
         document.getElementById('nextToStep4').onclick = function() {
             showStep(4);
+            createHearts();
+        };
+        
+        document.getElementById('nextToStep5').onclick = function() {
+            showStep(5);
+            createHearts();
+        };
+        
+        document.getElementById('nextToStep6').onclick = function() {
+            showStep(6);
+            createHearts();
+        };
+        
+        document.getElementById('nextToStep7').onclick = function() {
+            showStep(7);
+            createHearts();
+        };
+        
+        document.getElementById('nextToStep8').onclick = function() {
+            showStep(8);
+            createHearts();
+        };
+        
+        document.getElementById('nextToStep9').onclick = function() {
+            showStep(9);
             document.getElementById('gallerySection').classList.remove('hidden');
             document.getElementById('messagesSection').classList.remove('hidden');
             createHearts();
