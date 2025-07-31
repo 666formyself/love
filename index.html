@@ -79,8 +79,12 @@
             border-radius: 10px;
             margin: 20px 0;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: left;
+            text-align:center;
             animation: slideInLeft 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
         .message-box {
@@ -116,6 +120,7 @@
             font-size: 1em;
             transition: all 0.3s;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 15px 5px; /* 添加间距 */
         }
         
         button:hover {
@@ -395,15 +400,19 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
             text-align: center;
             min-height: 350px;
-            display: none; /* 初始隐藏 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        
+
         .experience-content {
         margin: 30px 0;
         padding: 20px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        /*align-items: center;*/
+        text-align: center;
     }
         
         .experience-content h2 {
@@ -461,10 +470,112 @@
             font-size: 1.1em;
             margin: 15px;
         }
+        
+        /* 新增样式 */
+        .memory-section h2 {
+            color: #ff4d4d;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .messages-container {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+            width: 100%;
+        }
+
+        .gallery-title {
+            font-size: 1.3em;
+            color: #ff4d4d;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .gallery-subtitle {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .heart-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-decoration {
+            position: absolute;
+            color: #ff4d4d;
+            font-size: 20px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .heart-decoration:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .heart-decoration:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation: float 6s infinite ease-in-out 1s;
+        }
+
+        .heart-decoration:nth-child(3) {
+            bottom: 15%;
+            left: 15%;
+            animation: float 7s infinite ease-in-out 2s;
+        }
+
+        .heart-decoration:nth-child(4) {
+            bottom: 25%;
+            right: 5%;
+            animation: float 9s infinite ease-in-out 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="heart-container">
+            <div class="heart-decoration">❤</div>
+            <div class="heart-decoration">❤</div>
+            <div class="heart-decoration">❤</div>
+            <div class="heart-decoration">❤</div>
+        </div>
+        
         <header>
             <h1>❤️ 我们的恋爱纪念日 ❤️</h1>
             <p>从相遇的那一天起，每一天都因你而美好</p>
@@ -504,13 +615,13 @@
         </div>
         
         <div class="experience-section">
-            <div id="step1-content" class="experience-content">
+            <div id="step1-content" class="experience-content hidden">
                 <h2>欢迎来到我们的纪念日网站</h2>
                 <p>点击下面的按钮开始我们这一年的回忆之旅</p>
                 <button id="startInteractiveJourneyBtn">开始旅程</button>
             </div>
             
-            <div id="step2-content" class="experience-content hidden">
+            <div id="step2-content" class="eexperience-content hidden">
                 <h2>第一站：九月镇江一日游</h2>
                 <p>金山寺前，北固楼上，西津渡里</p>
                 <button id="nextToStep3">继续回忆</button>
@@ -533,7 +644,8 @@
         </div>
         
         <div class="memory-section hidden" id="gallerySection">
-            <h2>我们的美好回忆</h2>
+            <h2 class="gallery-title">我们的美好回忆</h2>
+            <p class="gallery-subtitle">记录我们一起走过的每一个瞬间</p>
             <div class="gallery" id="mediaGallery">
                 <!-- 这里会动态添加照片和视频 -->
                 <div class="gallery-item">
@@ -543,15 +655,16 @@
                     <img src="https://via.placeholder.com/150?text=甜蜜时刻" alt="回忆照片">
                 </div>
             </div>
-            <div style="margin-top: 20px;">
-                <button id="addPhotoBtn">添加照片</button>
-                <button id="addVideoBtn">添加视频</button>
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
+                <button id="addPhotoBtn" class="pulse">添加照片</button>
+                <button id="addVideoBtn" class="pulse">添加视频</button>
             </div>
         </div>
         
         <!-- 探索回忆区域 -->
         <div id="exploreSection" class="memory-section hidden">
-            <h2>探索我们的回忆</h2>
+            <h2 class="gallery-title">探索我们的回忆</h2>
+            <p class="gallery-subtitle">重温那些美好的时光</p>
             <div class="gallery" id="exploreGallery">
                 <!-- 这里会动态添加照片和视频 -->
                 <div class="gallery-item">
@@ -562,13 +675,14 @@
                 </div>
             </div>
             <div style="margin-top: 20px;">
-                <button id="backToHomeFromExplore">回到主页</button>
+                <button id="backToHomeFromExplore" class="pulse">回到主页</button>
             </div>
         </div>
         
         <div class="memory-section hidden" id="messagesSection">
-            <h2>想对你说的话</h2>
-            <div id="messagesContainer">
+            <h2 class="gallery-title">想对你说的话</h2>
+            <p class="gallery-subtitle">记录我们彼此的心声</p>
+            <div class="messages-container" id="messagesContainer">
                 <div class="message-box">
                     <p>亲爱的，遇见你是我生命中最美好的事情。每一天和你在一起都让我感到无比幸福。</p>
                     <p class="message-date">2023年8月1日</p>
