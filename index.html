@@ -407,7 +407,7 @@
             margin: 60px 0;
             box-shadow: 0 12px 30px rgba(0,0,0,0.1);
             text-align: center;
-            min-height: 650px;
+            min-height: 700px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -420,17 +420,19 @@
             display: flex;
             flex-direction: column;
             text-align: center;
+            min-height: 500px;
+            width: 100%;
         }
         
         .experience-content h2 {
             font-size: 2.7em;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             text-align: center;
         }
         
         .experience-content p {
             font-size: 1.6em;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             line-height: 1.6;
             text-align: center;
         }
@@ -827,6 +829,42 @@
             display: block;
             margin-top: 5px;
         }
+        
+        /* 打字机效果 */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: pre-wrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(30, end), blink-caret .5s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+        
+        /* 音乐控制按钮 */
+        .music-control {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .music-control:hover {
+            background-color: #e60000;
+        }
     </style>
 </head>
 <body>
@@ -881,7 +919,6 @@
                 <img src="gifs/1.gif" alt="我们的美好时光" class="main-image">
                 <div class="home-buttons">
                     <button id="startJourneyBtn" class="home-button">开始回忆之旅</button>
-                    <button id="exploreMemories" class="home-button">探索回忆</button>
                 </div>
             </div>
         </div>
@@ -1007,42 +1044,18 @@
                 <h2>第八站：我想对你说</h2>
                 <div class="long-text-container">
                     <div class="long-text-content" id="longTextContent">
-                        <div class="letter-content">
-                            <p>亲爱的佳倩宝宝：</p>
-                            <p>没想到这么快又是一年过去了，每次写信都不禁感叹岁月如梭，转眼我们携手共同走过了第二年。这一年里，也是经历了很多故事，去了不少地方。</p>
-                            <p>在镇江，去金山寺回顾了白蛇传的传说故事，在北固楼同诗人一起望江怀古。在合肥，佳倩也鼓起勇气体验了刺激的丛林穿越，克服自己的恐惧，在省博感受皖的万年历史渊源。</p>
-                            <p>我们又去了西安，一起极限准备比赛，又游历了古都的鼓楼，走上西安的城墙，在不夜城前走过大雁塔。忙里偷闲时，南京栖霞山、动物园、博物院，枫叶的红，映出你的美，热情却不张扬。</p>
-                            <p>寒假初时苏州，园林的重峦叠嶂，如爱般百转千回，小桥流水前，人潮汹涌，但你在其中永远闪耀，我的目光永相随着。云南一周游，我们飞向自然之地，走过风花雪月，见证了玉龙雪山的信仰故事。</p>
-                            <p>路上的风景很多，很美，但与我而言，万千风景不敌你，美景不是我所追求的，我想要的是与你同游这世间。</p>
-                            <p>我知道佳倩宝宝是一个有勇气和信心的人，有着自己的追求和坚持，梦想很大，我们一起去闯。青春的锋芒不露，只会喟叹美人迟暮。我也知道佳倩宝宝是一个胆小谨慎的人，有着自己的畏惧和担忧，未来很长，我们继续向前，不要怕，我会一直陪在你身边。</p>
-                            <p>大学四年的生活已经接近尾声，我们的前途还是未卜，也许要面对很多挑战，害怕时空的距离会拉远心与心之间的距离。但我始终相信，一颗纯粹的赤子之心，会带领我们走向更好的明天。</p>
-                            <p>我一直努力在向你靠近，希望成为一个你可以依靠的人。人生总不是一帆风顺的，成功的路上历经重重坎坷。但我高兴的是，人生终究还是旷野，学业框不住的，才是真正的自己。命运如狂风暴雨席卷而来时，仍然坚持做自己。</p>
-                            <p>一路同行，我们一直在路上，奔向我们的梦。</p>
-                            <p class="letter-signature">永远爱你的人</p>
-                        </div>
+                        <div class="letter-content" id="letterContent"></div>
                     </div>
                 </div>
+                <button id="toggleMusic" class="music-control">播放/暂停音乐</button>
                 <button id="finishJourney">结束回忆之旅</button>
             </div>
         </div>
         
-        <!-- 探索回忆区域 -->
-        <div id="exploreSection" class="memory-section hidden">
-            <h2 class="gallery-title">探索我们的回忆</h2>
-            <p class="gallery-subtitle">重温那些美好的时光</p>
-            <div class="gallery" id="exploreGallery">
-                <!-- 这里会动态添加照片和视频 -->
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/150?text=我们的照片" alt="回忆照片">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/150?text=甜蜜时刻" alt="回忆照片">
-                </div>
-            </div>
-            <div style="margin-top: 50px;">
-                <button id="backToHomeFromExplore" class="pulse">回到主页</button>
-            </div>
-        </div>
+        <!-- 隐藏的音乐元素 -->
+        <audio id="backgroundMusic" loop>
+            <source src="music/1.mp3" type="audio/mpeg">
+        </audio>
     </div>
     
     <!-- 隐藏的API接口区域 -->
@@ -1217,6 +1230,8 @@
         let currentStep = 1;
         let currentVideos = []; // 用于跟踪当前播放的视频
         let videoSequence = []; // 用于跟踪第七站的视频序列
+        let backgroundMusic = document.getElementById('backgroundMusic');
+        let isMusicPlaying = false;
         
         function updateStepIndicator(step) {
             // 更新步骤指示器以支持9个步骤
@@ -1294,8 +1309,8 @@
                     // 第七站：按顺序播放三个视频
                     playVideosInSequence();
                 } else if (step === 9) {
-                    // 在长文本页面添加阅读动画效果
-                    animateTextReading();
+                    // 在长文本页面添加打字机效果
+                    typeWriterEffect();
                 }
             }
             
@@ -1345,23 +1360,66 @@
             }
         }
         
-        // 长文本阅读动画效果
-        function animateTextReading() {
-            const textContainer = document.getElementById('longTextContent');
-            const paragraphs = textContainer.querySelectorAll('p');
+        // 打字机效果
+        function typeWriterEffect() {
+            const letterContent = document.getElementById('letterContent');
+            const text = `亲爱的佳倩宝宝：
+
+没想到这么快又是一年过去了，每次写信都不禁感叹岁月如梭，转眼我们携手共同走过了第二年。这一年里，也是经历了很多故事，去了不少地方。
+
+在镇江，去金山寺回顾了白蛇传的传说故事，在北固楼同诗人一起望江怀古。在合肥，佳倩也鼓起勇气体验了刺激的丛林穿越，克服自己的恐惧，在省博感受皖的万年历史渊源。
+
+我们又去了西安，一起极限准备比赛，又游历了古都的鼓楼，走上西安的城墙，在不夜城前走过大雁塔。忙里偷闲时，南京栖霞山、动物园、博物院，枫叶的红，映出你的美，热情却不张扬。
+
+寒假初时苏州，园林的重峦叠嶂，如爱般百转千回，小桥流水前，人潮汹涌，但你在其中永远闪耀，我的目光永相随着。云南一周游，我们飞向自然之地，走过风花雪月，见证了玉龙雪山的信仰故事。
+
+路上的风景很多，很美，但与我而言，万千风景不敌你，美景不是我所追求的，我想要的是与你同游这世间。
+
+我知道佳倩宝宝是一个有勇气和信心的人，有着自己的追求和坚持，梦想很大，我们一起去闯。青春的锋芒不露，只会喟叹美人迟暮。我也知道佳倩宝宝是一个胆小谨慎的人，有着自己的畏惧和担忧，未来很长，我们继续向前，不要怕，我会一直陪在你身边。
+
+大学四年的生活已经接近尾声，我们的前途还是未卜，也许要面对很多挑战，害怕时空的距离会拉远心与心之间的距离。但我始终相信，一颗纯粹的赤子之心，会带领我们走向更好的明天。
+
+我一直努力在向你靠近，希望成为一个你可以依靠的人。人生总不是一帆风顺的，成功的路上历经重重坎坷。但我高兴的是，人生终究还是旷野，学业框不住的，才是真正的自己。命运如狂风暴雨席卷而来时，仍然坚持做自己。
+
+一路同行，我们一直在路上，奔向我们的梦。
+
+永远爱你的人`;
             
-            // 逐段添加高亮动画
-            paragraphs.forEach((p, index) => {
-                setTimeout(() => {
-                    p.classList.add('text-highlight');
-                    
-                    // 移除动画类，以便可以重复触发
-                    setTimeout(() => {
-                        p.classList.remove('text-highlight');
-                    }, 2000);
-                }, index * 4000); // 每段间隔4秒
-            });
+            let i = 0;
+            letterContent.innerHTML = '';
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    // 处理换行符
+                    if (text.charAt(i) === '\n') {
+                        letterContent.innerHTML += '<br>';
+                    } else {
+                        letterContent.innerHTML += text.charAt(i);
+                    }
+                    i++;
+                    setTimeout(typeWriter, 50); // 调整打字速度
+                }
+            }
+            
+            typeWriter();
         }
+        
+        // 音乐控制
+        document.getElementById('toggleMusic').addEventListener('click', function() {
+            if (isMusicPlaying) {
+                backgroundMusic.pause();
+                isMusicPlaying = false;
+                this.textContent = '播放音乐';
+            } else {
+                backgroundMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    this.textContent = '暂停音乐';
+                }).catch(e => {
+                    console.log('音乐播放失败:', e);
+                    alert('音乐播放失败，请检查文件是否存在');
+                });
+            }
+        });
         
         // 主页按钮事件
         document.getElementById('startJourneyBtn').onclick = function() {
@@ -1372,14 +1430,6 @@
             document.getElementById('stepIndicator').style.display = 'flex';
             // 显示第一步
             showStep(1);
-            createHearts();
-        };
-        
-        document.getElementById('exploreMemories').onclick = function() {
-            // 隐藏主页
-            document.getElementById('homeSection').style.display = 'none';
-            // 显示探索区域
-            document.getElementById('exploreSection').classList.remove('hidden');
             createHearts();
         };
         
@@ -1433,6 +1483,10 @@
             });
             currentVideos = [];
             
+            // 停止背景音乐
+            backgroundMusic.pause();
+            isMusicPlaying = false;
+            
             // 隐藏所有互动内容
             document.querySelector('.experience-section').style.display = 'none';
             document.getElementById('stepIndicator').style.display = 'none';
@@ -1443,12 +1497,6 @@
             // 重置步骤指示器
             updateStepIndicator(1);
             currentStep = 1;
-        };
-        
-        // 从探索区域回到主页
-        document.getElementById('backToHomeFromExplore').onclick = function() {
-            document.getElementById('exploreSection').classList.add('hidden');
-            document.getElementById('homeSection').style.display = 'flex';
         };
         
         // 创建飘心动画
