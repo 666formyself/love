@@ -865,6 +865,23 @@
         .music-control:hover {
             background-color: #e60000;
         }
+        
+        /* 添加烟花特效样式 */
+        .firework {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -1129,11 +1146,119 @@
             setTimeout(() => {
                 secondsElement.classList.remove('pulse');
             }, 500);
+            
+            // 检查是否达到两周年
+            checkAnniversary(years, months, days);
         }
         
-        // 每秒更新一次计时器
-        setInterval(updateLoveCounter, 1000);
-        updateLoveCounter(); // 初始调用
+        // 检查是否达到两周年
+        function checkAnniversary(years, months, days) {
+            // 确保是正好两年，并且只触发一次
+            if (years === 2 && months === 0 && days === 0 && !window.anniversaryCelebrated) {
+                window.anniversaryCelebrated = true;
+                celebrateAnniversary();
+            }
+        }
+        
+        // 创建烟花特效
+        function createFirework(x, y) {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffffff'];
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = x + 'px';
+            firework.style.top = y + 'px';
+            document.body.appendChild(firework);
+
+            // 创建烟花粒子
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.backgroundColor = color;
+                particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+                firework.appendChild(particle);
+
+                // 粒子动画
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 2 + Math.random() * 3;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                const size = 2 + Math.random() * 3;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.opacity = 1;
+                
+                // 使用动画实现烟花效果
+                const animation = particle.animate([
+                    { 
+                        transform: 'translate(0, 0) scale(1)',
+                        opacity: 1
+                    },
+                    { 
+                        transform: `translate(${vx * 50}px, ${vy * 50}px) scale(0)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: 1000 + Math.random() * 1000,
+                    easing: 'cubic-bezier(0, .9, .57, 1)'
+                });
+
+                animation.onfinish = () => {
+                    particle.remove();
+                };
+            }
+
+            // 烟花主体动画
+            const fireworkAnimation = firework.animate([
+                { transform: 'scale(1)', opacity: 1 },
+                { transform: 'scale(0)', opacity: 0 }
+            ], {
+                duration: 300
+            });
+
+            fireworkAnimation.onfinish = () => {
+                firework.remove();
+            };
+        }
+
+        // 庆祝两周年
+        function celebrateAnniversary() {
+            // 创建多个烟花
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight / 2;
+                    createFirework(x, y);
+                }, i * 300);
+            }
+            
+            // 显示庆祝消息
+            const celebrationMessage = document.createElement('div');
+            celebrationMessage.style.position = 'fixed';
+            celebrationMessage.style.top = '50%';
+            celebrationMessage.style.left = '50%';
+            celebrationMessage.style.transform = 'translate(-50%, -50%)';
+            celebrationMessage.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            celebrationMessage.style.padding = '30px 50px';
+            celebrationMessage.style.borderRadius = '20px';
+            celebrationMessage.style.boxShadow = '0 0 30px rgba(255, 77, 77, 0.8)';
+            celebrationMessage.style.zIndex = '9999';
+            celebrationMessage.style.textAlign = 'center';
+            celebrationMessage.style.fontSize = '2.5em';
+            celebrationMessage.style.color = '#ff4d4d';
+            celebrationMessage.style.fontWeight = 'bold';
+            celebrationMessage.innerHTML = '🎉 两周年快乐！ 🎉<br><span style="font-size: 0.7em; margin-top: 10px; display: block;">两年的时光，感谢有你</span>';
+            document.body.appendChild(celebrationMessage);
+            
+            // 5秒后移除庆祝消息
+            setTimeout(() => {
+                celebrationMessage.remove();
+            }, 5000);
+        }
+        
+        // 初始化周年庆祝状态
+        window.anniversaryCelebrated = false;
         
         // 改进的视频播放检查函数
         function checkVideoPlayback() {
@@ -1552,6 +1677,10 @@
             // 这里可以实现更新起始日期的逻辑
             alert('起始日期已更新为: ' + this.dataset.date);
         };
+        
+        // 每秒更新一次计时器
+        setInterval(updateLoveCounter, 1000);
+        updateLoveCounter(); // 初始调用
     </script>
 </body>
 </html>
