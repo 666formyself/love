@@ -16,7 +16,7 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
             position: relative;
@@ -25,23 +25,23 @@
         header {
             background-color: #ff4d4d;
             color: white;
-            padding: 20px;
-            border-radius: 10px 10px 0 0;
+            padding: 60px;
+            border-radius: 25px 25px 0 0;
             animation: fadeInDown 1s ease-out;
         }
         
         h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3.5em;
             animation: heartBeat 1.5s infinite;
         }
         
         .love-counter {
             background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 50px;
+            border-radius: 25px;
+            margin: 50px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             animation: zoomIn 1s ease-out;
         }
         
@@ -49,16 +49,16 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 35px;
+            margin: 50px 0;
         }
         
         .gallery-item {
-            width: 150px;
-            height: 150px;
-            border-radius: 10px;
+            width: 220px;
+            height: 220px;
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s;
             animation: fadeIn 0.5s ease-out;
         }
@@ -75,10 +75,10 @@
         
         .memory-section {
             background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 60px;
+            border-radius: 25px;
+            margin: 50px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             text-align:center;
             animation: slideInLeft 1s ease-out;
             display: flex;
@@ -89,14 +89,17 @@
         
         .message-box {
             background-color: #fff9f9;
-            border-left: 5px solid #ff4d4d;
-            padding: 15px;
-            margin: 15px 0;
+            border-left: 12px solid #ff4d4d;
+            padding: 40px;
+            margin: 40px 0;
             animation: fadeInUp 0.8s ease-out;
+            text-align: left;
+            width: 100%;
+            max-width: 800px;
         }
         
         .message-date {
-            font-size: 0.85em;
+            font-size: 1.1em;
             color: #888;
             text-align: right;
         }
@@ -105,8 +108,8 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 25px;
+            margin: 50px 0;
             animation: bounceIn 1.2s;
         }
         
@@ -114,19 +117,19 @@
             background-color: #ff4d4d;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 25px 45px;
+            border-radius: 15px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.5em;
             transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin: 15px 5px; /* 添加间距 */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin: 25px 20px;
         }
         
         button:hover {
             background-color: #e60000;
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
         
         button:active {
@@ -134,10 +137,11 @@
         }
         
         footer {
-            margin-top: 30px;
-            padding: 10px;
+            margin-top: 80px;
+            padding: 40px;
             color: #666;
             animation: fadeIn 2s;
+            font-size: 1.4em;
         }
         
         /* 弹窗样式 */
@@ -156,11 +160,11 @@
         
         .modal-content {
             background-color: #fefefe;
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 600px;
+            margin: 5% auto;
+            padding: 50px;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 800px;
             animation: zoomIn 0.3s;
             position: relative;
         }
@@ -168,7 +172,7 @@
         .close {
             color: #aaa;
             float: right;
-            font-size: 28px;
+            font-size: 45px;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.3s;
@@ -180,11 +184,12 @@
         
         textarea, input[type="text"], input[type="file"] {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 4px solid #ddd;
+            border-radius: 15px;
             box-sizing: border-box;
+            font-size: 1.4em;
         }
         
         /* 动画关键帧 */
@@ -279,22 +284,25 @@
         .guide-step {
             position: fixed;
             background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #ff4d4d;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            border: 5px solid #ff4d4d;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
             z-index: 2000;
-            max-width: 300px;
+            max-width: 550px;
             display: none;
         }
         
         .guide-step h3 {
             margin-top: 0;
             color: #ff4d4d;
+            font-size: 2.2em;
         }
         
         .guide-step button {
-            margin: 5px;
+            margin: 20px;
+            padding: 20px 35px;
+            font-size: 1.4em;
         }
         
         .guide-overlay {
@@ -322,7 +330,7 @@
         
         .heart {
             position: absolute;
-            font-size: 24px;
+            font-size: 45px;
             color: #ff4d4d;
             animation: floatUp 5s linear forwards;
         }
@@ -337,12 +345,12 @@
         /* 主页区域样式 */
         .home-section {
             background-color: white;
-            padding: 40px 30px;
-            border-radius: 15px;
-            margin: 25px 0;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            padding: 80px 60px;
+            border-radius: 30px;
+            margin: 60px 0;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
             text-align: center;
-            min-height: 400px;
+            min-height: 700px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -350,29 +358,29 @@
         }
         
         .home-content {
-            margin: 20px 0;
+            margin: 50px 0;
             width: 100%;
         }
         
         .home-content h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
+            font-size: 3.2em;
+            margin-bottom: 50px;
             color: #ff4d4d;
         }
         
         .home-content p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
+            font-size: 1.7em;
+            margin-bottom: 60px;
             line-height: 1.6;
         }
         
         /* 主界面图片样式 */
         .main-image {
             max-width: 100%;
-            max-height: 350px;
-            border-radius: 15px;
-            margin: 25px 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            max-height: 650px;
+            border-radius: 30px;
+            margin: 60px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             animation: fadeIn 1.5s;
             display: block;
             margin-left: auto;
@@ -381,25 +389,25 @@
         
         /* 主页按钮样式 */
         .home-buttons {
-            margin: 30px 0;
+            margin: 60px 0;
         }
         
         .home-button {
-            padding: 15px 35px;
-            font-size: 1.2em;
-            margin: 15px 10px;
-            border-radius: 8px;
+            padding: 30px 60px;
+            font-size: 1.7em;
+            margin: 30px 25px;
+            border-radius: 20px;
         }
         
         /* 互动体验区域 */
         .experience-section {
             background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 25px 0;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            padding: 60px;
+            border-radius: 30px;
+            margin: 60px 0;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
             text-align: center;
-            min-height: 350px;
+            min-height: 650px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -407,23 +415,22 @@
         }
 
         .experience-content {
-        margin: 30px 0;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        /*align-items: center;*/
-        text-align: center;
-    }
+            margin: 60px 0;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
         
         .experience-content h2 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
+            font-size: 2.7em;
+            margin-bottom: 50px;
             text-align: center;
         }
         
         .experience-content p {
-            font-size: 1.1em;
-            margin-bottom: 25px;
+            font-size: 1.6em;
+            margin-bottom: 50px;
             line-height: 1.6;
             text-align: center;
         }
@@ -435,15 +442,15 @@
         .step-indicator {
             display: flex;
             justify-content: center;
-            margin: 20px 0;
+            margin: 50px 0;
         }
         
         .step-dot {
-            width: 12px;
-            height: 12px;
+            width: 25px;
+            height: 25px;
             border-radius: 50%;
             background-color: #ddd;
-            margin: 0 3px;
+            margin: 0 10px;
             transition: background-color 0.3s;
         }
         
@@ -454,49 +461,49 @@
         /* 回到主页按钮样式 */
         #backToHome, #backToHomeFromExplore {
             background-color: #666;
-            padding: 12px 25px;
-            margin-top: 20px;
+            padding: 25px 40px;
+            margin-top: 40px;
         }
         
         #backToHome:hover, #backToHomeFromExplore:hover {
             background-color: #444;
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
         
         /* 大按钮样式 */
         #exploreMemories, #addNewMemory {
-            padding: 15px 30px;
-            font-size: 1.1em;
-            margin: 15px;
+            padding: 30px 45px;
+            font-size: 1.6em;
+            margin: 30px;
         }
         
         /* 新增样式 */
         .memory-section h2 {
             color: #ff4d4d;
-            font-size: 1.5em;
-            margin-bottom: 15px;
+            font-size: 2.7em;
+            margin-bottom: 40px;
             text-align: center;
         }
 
         .messages-container {
-            max-height: 300px;
+            max-height: 600px;
             overflow-y: auto;
-            padding-right: 10px;
+            padding-right: 25px;
             width: 100%;
         }
 
         .gallery-title {
-            font-size: 1.3em;
+            font-size: 2.2em;
             color: #ff4d4d;
-            margin-bottom: 15px;
+            margin-bottom: 40px;
             font-weight: bold;
         }
 
         .gallery-subtitle {
-            font-size: 1em;
+            font-size: 1.5em;
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
         }
 
         .heart-container {
@@ -512,7 +519,7 @@
         .heart-decoration {
             position: absolute;
             color: #ff4d4d;
-            font-size: 20px;
+            font-size: 40px;
             opacity: 0.3;
             z-index: 1;
         }
@@ -565,6 +572,232 @@
         .pulse {
             animation: pulse 2s infinite;
         }
+        
+        /* 第一站视频样式 - 增加高度以完整显示视频 */
+        .step-video {
+            width: 95%;
+            max-width: 750px;
+            height: 450px; /* 增加固定高度以确保视频完整显示 */
+            margin: 40px auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+        
+        .step-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 保持视频比例完整显示 */
+        }
+        
+        .step-image {
+            width: 95%;
+            max-width: 750px;
+            margin: 40px auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+        
+        .step-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* 视频播放错误提示 */
+        .video-error {
+            color: #ff4d4d;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #fff9f9;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        /* 恋爱计时器样式 - 放大字体并添加动画 */
+        .love-counter h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ff4d4d;
+        }
+        
+        #counter {
+            font-size: 2em; /* 增大字体 */
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+            padding: 15px;
+            background: linear-gradient(135deg, #fff9f9, #ffe6e6);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .time-unit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff4d4d, #ff9999);
+        }
+        
+        .time-value {
+            font-size: 2.5em; /* 数字字体更大 */
+            font-weight: bold;
+            color: #ff4d4d;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            animation: glow 2s infinite alternate;
+        }
+        
+        .time-label {
+            font-size: 1em;
+            color: #666;
+        }
+        
+        /* 时间数字发光动画 */
+        @keyframes glow {
+            from {
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            }
+            to {
+                text-shadow: 0 0 10px rgba(255, 77, 77, 0.5),
+                             0 0 20px rgba(255, 77, 77, 0.3);
+            }
+        }
+        
+        /* 时间单位入场动画 */
+        .time-unit {
+            animation: timeUnitAppear 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .time-unit:nth-child(1) { animation-delay: 0.1s; }
+        .time-unit:nth-child(2) { animation-delay: 0.2s; }
+        .time-unit:nth-child(3) { animation-delay: 0.3s; }
+        .time-unit:nth-child(4) { animation-delay: 0.4s; }
+        .time-unit:nth-child(5) { animation-delay: 0.5s; }
+        .time-unit:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes timeUnitAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 跳动效果 */
+        .time-value.pulse {
+            animation: timePulse 1s infinite;
+        }
+        
+        @keyframes timePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* 多视频容器 */
+        .multi-video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .multi-video-container .step-video {
+            width: 45%;
+            min-width: 300px;
+            height: 250px;
+            margin: 10px;
+        }
+        
+        /* 长文本展示样式 */
+        .long-text-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.4em;
+            line-height: 1.8;
+            padding: 30px;
+            background-color: #fff9f9;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .long-text-content {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            border: 2px solid #ffd6d6;
+            border-radius: 15px;
+            background-color: white;
+        }
+        
+        .long-text-content p {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            text-indent: 2em;
+        }
+        
+        /* 文本阅读动画 */
+        .text-highlight {
+            display: inline-block;
+            background-color: #ffeb3b;
+            animation: highlight 2s ease-in-out;
+        }
+        
+        @keyframes highlight {
+            0% {
+                background-color: transparent;
+            }
+            50% {
+                background-color: #ffeb3b;
+            }
+            100% {
+                background-color: transparent;
+            }
+        }
+        
+        /* 信件样式 */
+        .letter-content {
+            text-align: left;
+            font-family: 'STKaiti', '楷体', serif;
+            line-height: 1.8;
+            font-size: 1.3em;
+        }
+        
+        .letter-content p {
+            margin-bottom: 20px;
+            text-indent: 2em;
+        }
+        
+        .letter-content p:first-child {
+            text-indent: 0;
+        }
+        
+        .letter-signature {
+            text-align: right;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -584,12 +817,30 @@
         <div class="love-counter">
             <h2>我们已经在一起</h2>
             <div id="counter">
-                <span id="years">0</span> 年 
-                <span id="months">0</span> 月 
-                <span id="days">0</span> 天 
-                <span id="hours">0</span> 小时 
-                <span id="minutes">0</span> 分钟 
-                <span id="seconds">0</span> 秒
+                <div class="time-unit">
+                    <span id="years" class="time-value">0</span>
+                    <span class="time-label">年</span>
+                </div>
+                <div class="time-unit">
+                    <span id="months" class="time-value">0</span>
+                    <span class="time-label">月</span>
+                </div>
+                <div class="time-unit">
+                    <span id="days" class="time-value">0</span>
+                    <span class="time-label">天</span>
+                </div>
+                <div class="time-unit">
+                    <span id="hours" class="time-value">0</span>
+                    <span class="time-label">小时</span>
+                </div>
+                <div class="time-unit">
+                    <span id="minutes" class="time-value">0</span>
+                    <span class="time-label">分钟</span>
+                </div>
+                <div class="time-unit">
+                    <span id="seconds" class="time-value">0</span>
+                    <span class="time-label">秒</span>
+                </div>
             </div>
         </div>
         
@@ -598,7 +849,7 @@
             <div class="home-content">
                 <h2>欢迎来到我们的纪念日网站</h2>
                 <p>这里记录了我们在一起的每一个美好瞬间</p>
-                <img src="images/1.jpg" alt="我们的美好时光" class="main-image">
+                <img src="gifs/1.gif" alt="我们的美好时光" class="main-image">
                 <div class="home-buttons">
                     <button id="startJourneyBtn" class="home-button">开始回忆之旅</button>
                     <button id="exploreMemories" class="home-button">探索回忆</button>
@@ -629,70 +880,120 @@
             <div id="step2-content" class="experience-content hidden">
                 <h2>第一站：九月镇江一日游</h2>
                 <p>金山寺前，北固楼上，西津渡里</p>
+                <div class="step-video">
+                    <video id="video1" controls>
+                        <source src="videos/video1.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+                <div class="video-error" id="videoError1">
+                    视频加载失败，请检查文件路径或格式是否正确。
+                </div>
                 <button id="nextToStep3">继续回忆</button>
             </div>
             
             <div id="step3-content" class="experience-content hidden">
                 <h2>第二站：中秋合肥之行</h2>
                 <p>古逍遥津的丛林穿梭留下深刻影响</p>
-                <p>此处暂无合适照片</p>
                 <button id="nextToStep4">继续回忆</button>
             </div>
 
              <div id="step4-content" class="experience-content hidden">
                 <h2>第三站：停机坪旁的格桑花</h2>
                 <p>国奖答辩后的佳倩，美美哒</p>
-                
+                <div class="step-video">
+                    <video id="video2" controls>
+                        <source src="videos/video2.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+                <div class="video-error" id="videoError2">
+                    视频加载失败，请检查文件路径或格式是否正确。
+                </div>
                 <button id="nextToStep5">继续回忆</button>
             </div>
              <div id="step5-content" class="experience-content hidden">
                 <h2>第四站：西安城墙</h2>
                 <p>么么</p>
-                
+                 <div class="step-image">
+                    <img src="images/2.jpg" alt="西安城墙">
+                </div>
                 <button id="nextToStep6">继续回忆</button>
             </div>
             <div id="step6-content" class="experience-content hidden">
                 <h2>第五站：栖霞山</h2>
                 <p>红枫漫天，倩影独立</p>
-                
+                <div class="step-video">
+                    <video id="video3" controls>
+                        <source src="videos/video3.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+                <div class="video-error" id="videoError3">
+                    视频加载失败，请检查文件路径或格式是否正确。
+                </div>
                 <button id="nextToStep7">继续回忆</button>
             </div>
             <div id="step7-content" class="experience-content hidden">
                 <h2>第六站：苏州园林</h2>
                 <p>看看小桥流水人家</p>
+                <div class="step-video">
+                    <video id="video4" controls>
+                        <source src="videos/video4.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+                <div class="video-error" id="videoError4">
+                    视频加载失败，请检查文件路径或格式是否正确。
+                </div>
                  <button id="nextToStep8">继续回忆</button>
             </div>
              <div id="step8-content" class="experience-content hidden">
                 <h2>第七站：春寒料峭的云南</h2>
                 <p>见过风花雪月，环绕洱海，在玉龙雪山脚下感受纳西族的信仰</p>
+                <div class="multi-video-container">
+                    <div class="step-video">
+                        <video id="video5" controls>
+                            <source src="videos/video5.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                    </div>
+                    <div class="step-video">
+                        <video id="video6" controls>
+                            <source src="videos/video6.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                    </div>
+                    <div class="step-video">
+                        <video id="video7" controls>
+                            <source src="videos/video7.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                    </div>
+                </div>
                  <button id="nextToStep9">继续回忆</button>
             </div>
 
             <div id="step9-content" class="experience-content hidden">
-                <h2>第九站：我们的心里话</h2>
-                <p>现在，让我们互相表达内心的情感...</p>
-                <button id="addMessageInteractive">写下心里话</button>
-                <button id="showGallery">查看我们的照片和视频</button>
-                <!-- 添加回到主页按钮 -->
-                <button id="backToHomeFromInteractive">回到主页</button>
-            </div>
-        </div>
-        
-        <div class="memory-section hidden" id="gallerySection">
-            <h2 class="gallery-title">我们的美好回忆</h2>
-            <p class="gallery-subtitle">记录我们一起走过的每一个瞬间</p>
-            <div class="gallery" id="mediaGallery">
-                <!-- 这里会动态添加照片和视频 -->
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/150?text=我们的照片" alt="回忆照片">
+                <h2>第八站：我想对你说</h2>
+                <div class="long-text-container">
+                    <div class="long-text-content" id="longTextContent">
+                        <div class="letter-content">
+                            <p>亲爱的佳倩宝宝：</p>
+                            <p>没想到这么快又是一年过去了，每次写信都不禁感叹岁月如梭，转眼我们携手共同走过了第二年。这一年里，也是经历了很多故事，去了不少地方。</p>
+                            <p>在镇江，去金山寺回顾了白蛇传的传说故事，在北固楼同诗人一起望江怀古。在合肥，佳倩也鼓起勇气体验了刺激的丛林穿越，克服自己的恐惧，在省博感受皖的万年历史渊源。</p>
+                            <p>我们又去了西安，一起极限准备比赛，又游历了古都的鼓楼，走上西安的城墙，在不夜城前走过大雁塔。忙里偷闲时，南京栖霞山、动物园、博物院，枫叶的红，映出你的美，热情却不张扬。</p>
+                            <p>寒假初时苏州，园林的重峦叠嶂，如爱般百转千回，小桥流水前，人潮汹涌，但你在其中永远闪耀，我的目光永相随着。云南一周游，我们飞向自然之地，走过风花雪月，见证了玉龙雪山的信仰故事。</p>
+                            <p>路上的风景很多，很美，但与我而言，万千风景不敌你，美景不是我所追求的，我想要的是与你同游这世间。</p>
+                            <p>我知道佳倩宝宝是一个有勇气和信心的人，有着自己的追求和坚持，梦想很大，我们一起去闯。青春的锋芒不露，只会喟叹美人迟暮。我也知道佳倩宝宝是一个胆小谨慎的人，有着自己的畏惧和担忧，未来很长，我们继续向前，不要怕，我会一直陪在你身边。</p>
+                            <p>大学四年的生活已经接近尾声，我们的前途还是未卜，也许要面对很多挑战，害怕时空的距离会拉远心与心之间的距离。但我始终相信，一颗纯粹的赤子之心，会带领我们走向更好的明天。</p>
+                            <p>我一直努力在向你靠近，希望成为一个你可以依靠的人。人生总不是一帆风顺的，成功的路上历经重重坎坷。但我高兴的是，人生终究还是旷野，学业框不住的，才是真正的自己。命运如狂风暴雨席卷而来时，仍然坚持做自己。</p>
+                            <p>一路同行，我们一直在路上，奔向我们的梦。</p>
+                            <p class="letter-signature">永远爱你的人</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/150?text=甜蜜时刻" alt="回忆照片">
-                </div>
-            </div>
-            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
-                <button id="addPhotoBtn" class="pulse">添加照片</button>
-                <button id="addVideoBtn" class="pulse">添加视频</button>
+                <button id="finishJourney">结束回忆之旅</button>
             </div>
         </div>
         
@@ -709,52 +1010,9 @@
                     <img src="https://via.placeholder.com/150?text=甜蜜时刻" alt="回忆照片">
                 </div>
             </div>
-            <div style="margin-top: 20px;">
+            <div style="margin-top: 50px;">
                 <button id="backToHomeFromExplore" class="pulse">回到主页</button>
             </div>
-        </div>
-        
-        <div class="memory-section hidden" id="messagesSection">
-            <h2 class="gallery-title">想对你说的话</h2>
-            <p class="gallery-subtitle">记录我们彼此的心声</p>
-            <div class="messages-container" id="messagesContainer">
-                <div class="message-box">
-                    <p>亲爱的，遇见你是我生命中最美好的事情。每一天和你在一起都让我感到无比幸福。</p>
-                    <p class="message-date">2023年8月1日</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 添加照片的弹窗 -->
-    <div id="photoModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>添加照片</h2>
-            <input type="file" id="photoUpload" accept="image/*">
-            <input type="text" id="photoCaption" placeholder="为照片添加描述...">
-            <button id="savePhotoBtn">保存照片</button>
-        </div>
-    </div>
-    
-    <!-- 添加视频的弹窗 -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>添加视频</h2>
-            <input type="file" id="videoUpload" accept="video/*">
-            <input type="text" id="videoCaption" placeholder="为视频添加描述...">
-            <button id="saveVideoBtn">保存视频</button>
-        </div>
-    </div>
-    
-    <!-- 添加留言的弹窗 -->
-    <div id="messageModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>写下你的心里话</h2>
-            <textarea id="messageText" rows="5" placeholder="写下你想说的话..."></textarea>
-            <button id="saveMessageBtn">保存留言</button>
         </div>
     </div>
     
@@ -821,14 +1079,44 @@
             document.getElementById('hours').textContent = hours;
             document.getElementById('minutes').textContent = minutes;
             document.getElementById('seconds').textContent = seconds;
+            
+            // 为每秒变化的数字添加跳动效果
+            const secondsElement = document.getElementById('seconds');
+            secondsElement.classList.add('pulse');
+            setTimeout(() => {
+                secondsElement.classList.remove('pulse');
+            }, 500);
         }
         
         // 每秒更新一次计时器
         setInterval(updateLoveCounter, 1000);
         updateLoveCounter(); // 初始调用
         
+        // 检查视频是否可以播放
+        function checkVideoPlayback() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach((video, index) => {
+                const errorDiv = document.getElementById(`videoError${index + 1}`);
+                if (video && errorDiv) {
+                    video.addEventListener('error', function(e) {
+                        console.log('视频加载错误:', e);
+                        errorDiv.style.display = 'block';
+                    });
+                    
+                    video.addEventListener('loadeddata', function() {
+                        errorDiv.style.display = 'none';
+                    });
+                }
+            });
+        }
+        
+        // 页面加载完成后检查视频
+        window.addEventListener('load', checkVideoPlayback);
+        
         // 互动体验步骤控制
         let currentStep = 1;
+        let currentVideos = []; // 用于跟踪当前播放的视频
+        let videoSequence = []; // 用于跟踪第七站的视频序列
         
         function updateStepIndicator(step) {
             // 更新步骤指示器以支持9个步骤
@@ -845,6 +1133,17 @@
         }
         
         function showStep(step) {
+            // 停止当前播放的视频
+            currentVideos.forEach(video => {
+                if (video) {
+                    video.pause();
+                }
+            });
+            currentVideos = [];
+            
+            // 清除视频序列
+            videoSequence = [];
+            
             // 隐藏所有步骤内容 (更新到step9)
             for (let i = 1; i <= 9; i++) {
                 const stepElement = document.getElementById(`step${i}-content`);
@@ -857,12 +1156,118 @@
             const currentStepElement = document.getElementById(`step${step}-content`);
             if (currentStepElement) {
                 currentStepElement.classList.remove('hidden');
+                
+                // 如果是视频步骤，自动播放视频
+                if (step === 2) {
+                    const video = document.getElementById('video1');
+                    if (video) {
+                        setTimeout(() => {
+                            video.play().catch(e => console.log('自动播放失败:', e));
+                            currentVideos.push(video);
+                        }, 100);
+                    }
+                } else if (step === 4) {
+                    const video = document.getElementById('video2');
+                    if (video) {
+                        setTimeout(() => {
+                            video.play().catch(e => console.log('自动播放失败:', e));
+                            currentVideos.push(video);
+                        }, 100);
+                    }
+                } else if (step === 6) {
+                    const video = document.getElementById('video3');
+                    if (video) {
+                        setTimeout(() => {
+                            video.play().catch(e => console.log('自动播放失败:', e));
+                            currentVideos.push(video);
+                        }, 100);
+                    }
+                } else if (step === 7) {
+                    const video = document.getElementById('video4');
+                    if (video) {
+                        setTimeout(() => {
+                            video.play().catch(e => console.log('自动播放失败:', e));
+                            currentVideos.push(video);
+                        }, 100);
+                    }
+                } else if (step === 8) {
+                    // 第七站：按顺序播放三个视频
+                    playVideosInSequence();
+                } else if (step === 9) {
+                    // 在长文本页面添加阅读动画效果
+                    animateTextReading();
+                }
             }
             
             // 更新步骤指示器
             updateStepIndicator(step);
             
             currentStep = step;
+        }
+        
+        // 按顺序播放第七站的三个视频
+        function playVideosInSequence() {
+            const videos = [
+                document.getElementById('video5'),
+                document.getElementById('video6'),
+                document.getElementById('video7')
+            ];
+            
+            // 先隐藏所有视频
+            videos.forEach(video => {
+                if (video) {
+                    video.style.display = 'none';
+                }
+            });
+            
+            // 按顺序播放视频
+            playNextVideo(0);
+            
+            function playNextVideo(index) {
+                if (index >= videos.length) return;
+                
+                const video = videos[index];
+                if (video) {
+                    // 显示当前视频
+                    video.style.display = 'block';
+                    
+                    // 播放视频
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            // 播放成功
+                            currentVideos.push(video);
+                        }).catch(e => {
+                            console.log('自动播放失败:', e);
+                        });
+                    }
+                    
+                    // 监听视频结束事件
+                    video.addEventListener('ended', function onEnded() {
+                        video.removeEventListener('ended', onEnded);
+                        // 播放下一个视频
+                        playNextVideo(index + 1);
+                    });
+                }
+            }
+        }
+        
+        // 长文本阅读动画效果
+        function animateTextReading() {
+            const textContainer = document.getElementById('longTextContent');
+            const paragraphs = textContainer.querySelectorAll('p');
+            
+            // 逐段添加高亮动画
+            paragraphs.forEach((p, index) => {
+                setTimeout(() => {
+                    p.classList.add('text-highlight');
+                    
+                    // 移除动画类，以便可以重复触发
+                    setTimeout(() => {
+                        p.classList.remove('text-highlight');
+                    }, 2000);
+                }, index * 4000); // 每段间隔4秒
+            });
         }
         
         // 主页按钮事件
@@ -923,28 +1328,21 @@
         
         document.getElementById('nextToStep9').onclick = function() {
             showStep(9);
-            document.getElementById('gallerySection').classList.remove('hidden');
-            document.getElementById('messagesSection').classList.remove('hidden');
             createHearts();
         };
         
-        document.getElementById('addMessageInteractive').onclick = function() {
-            document.getElementById('messageModal').style.display = 'block';
-        };
-        
-        document.getElementById('showGallery').onclick = function() {
-            document.getElementById('gallerySection').classList.remove('hidden');
-            document.getElementById('messagesSection').classList.remove('hidden');
-            createHearts();
-        };
-        
-        // 回到主页功能
-        document.getElementById('backToHomeFromInteractive').onclick = function() {
+        document.getElementById('finishJourney').onclick = function() {
+            // 停止当前播放的视频
+            currentVideos.forEach(video => {
+                if (video) {
+                    video.pause();
+                }
+            });
+            currentVideos = [];
+            
             // 隐藏所有互动内容
             document.querySelector('.experience-section').style.display = 'none';
             document.getElementById('stepIndicator').style.display = 'none';
-            document.getElementById('gallerySection').classList.add('hidden');
-            document.getElementById('messagesSection').classList.add('hidden');
             
             // 显示主页
             document.getElementById('homeSection').style.display = 'flex';
@@ -959,140 +1357,6 @@
             document.getElementById('exploreSection').classList.add('hidden');
             document.getElementById('homeSection').style.display = 'flex';
         };
-        
-        // 弹窗控制
-        const photoModal = document.getElementById('photoModal');
-        const videoModal = document.getElementById('videoModal');
-        const messageModal = document.getElementById('messageModal');
-        
-        const addPhotoBtn = document.getElementById('addPhotoBtn');
-        const addVideoBtn = document.getElementById('addVideoBtn');
-        
-        const closeButtons = document.getElementsByClassName('close');
-        
-        addPhotoBtn.onclick = function() {
-            photoModal.style.display = 'block';
-        }
-        
-        addVideoBtn.onclick = function() {
-            videoModal.style.display = 'block';
-        }
-        
-        for (let i = 0; i < closeButtons.length; i++) {
-            closeButtons[i].onclick = function() {
-                photoModal.style.display = 'none';
-                videoModal.style.display = 'none';
-                messageModal.style.display = 'none';
-            }
-        }
-        
-        window.onclick = function(event) {
-            if (event.target == photoModal) {
-                photoModal.style.display = 'none';
-            }
-            if (event.target == videoModal) {
-                videoModal.style.display = 'none';
-            }
-            if (event.target == messageModal) {
-                messageModal.style.display = 'none';
-            }
-        }
-        
-        // 保存照片
-        document.getElementById('savePhotoBtn').onclick = function() {
-            const fileInput = document.getElementById('photoUpload');
-            const caption = document.getElementById('photoCaption').value;
-            
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    const gallery = document.getElementById('mediaGallery');
-                    const newItem = document.createElement('div');
-                    newItem.className = 'gallery-item';
-                    newItem.innerHTML = `<img src="${e.target.result}" alt="${caption || '我们的照片'}">`;
-                    gallery.appendChild(newItem);
-                    
-                    // 添加动画效果
-                    newItem.style.animation = 'fadeIn 0.5s';
-                    
-                    photoModal.style.display = 'none';
-                    fileInput.value = '';
-                    document.getElementById('photoCaption').value = '';
-                    
-                    // 创建爱心动画
-                    createHearts();
-                }
-                
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                alert('请选择一张照片');
-            }
-        }
-        
-        // 保存视频
-        document.getElementById('saveVideoBtn').onclick = function() {
-            const fileInput = document.getElementById('videoUpload');
-            const caption = document.getElementById('videoCaption').value;
-            
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    const gallery = document.getElementById('mediaGallery');
-                    const newItem = document.createElement('div');
-                    newItem.className = 'gallery-item';
-                    newItem.innerHTML = `
-                        <video controls>
-                            <source src="${e.target.result}" type="${fileInput.files[0].type}">
-                            您的浏览器不支持视频标签
-                        </video>
-                    `;
-                    gallery.appendChild(newItem);
-                    
-                    // 添加动画效果
-                    newItem.style.animation = 'fadeIn 0.5s';
-                    
-                    videoModal.style.display = 'none';
-                    fileInput.value = '';
-                    document.getElementById('videoCaption').value = '';
-                    
-                    // 创建爱心动画
-                    createHearts();
-                }
-                
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                alert('请选择一个视频');
-            }
-        }
-        
-        // 保存留言
-        document.getElementById('saveMessageBtn').onclick = function() {
-            const messageText = document.getElementById('messageText').value;
-            
-            if (messageText.trim()) {
-                const now = new Date();
-                const messageContainer = document.getElementById('messagesContainer');
-                const newMessage = document.createElement('div');
-                newMessage.className = 'message-box';
-                newMessage.innerHTML = `
-                    <p>${messageText}</p>
-                    <p class="message-date">${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日</p>
-                `;
-                
-                // 将新留言添加到最前面
-                messageContainer.insertBefore(newMessage, messageContainer.firstChild);
-                
-                messageModal.style.display = 'none';
-                document.getElementById('messageText').value = '';
-                
-                // 创建爱心动画
-                createHearts();
-            } else {
-                alert('请输入留言内容');
-            }
-        }
         
         // 创建飘心动画
         function createHearts() {
@@ -1119,7 +1383,7 @@
         
         // 隐藏API接口功能（仅供开发者使用）
         document.getElementById('addPresetPhoto').onclick = function() {
-            const gallery = document.getElementById('mediaGallery');
+            const gallery = document.getElementById('exploreGallery');
             const newItem = document.createElement('div');
             newItem.className = 'gallery-item';
             newItem.innerHTML = `<img src="${this.dataset.src}" alt="${this.dataset.caption}">`;
@@ -1128,25 +1392,18 @@
         };
         
         document.getElementById('addPresetMessage').onclick = function() {
-            const messageContainer = document.getElementById('messagesContainer');
-            const newMessage = document.createElement('div');
-            newMessage.className = 'message-box';
-            newMessage.innerHTML = `
-                <p>${this.dataset.text}</p>
-                <p class="message-date">${this.dataset.date}</p>
-            `;
-            messageContainer.insertBefore(newMessage, messageContainer.firstChild);
-            newMessage.style.animation = 'fadeIn 0.5s';
+            // 由于移除了留言部分，此功能暂时保留但不执行具体操作
+            alert('留言功能已移除');
         };
         
         document.getElementById('clearAllPhotos').onclick = function() {
-            const gallery = document.getElementById('mediaGallery');
+            const gallery = document.getElementById('exploreGallery');
             gallery.innerHTML = '';
         };
         
         document.getElementById('clearAllMessages').onclick = function() {
-            const messagesContainer = document.getElementById('messagesContainer');
-            messagesContainer.innerHTML = '';
+            // 由于移除了留言部分，此功能暂时保留但不执行具体操作
+            alert('留言功能已移除');
         };
         
         document.getElementById('updateStartDate').onclick = function() {
